@@ -1,1 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>픽데이 | 인스타 체험단 댓글 추첨</title>
+<style>
+:root{--bg:#f6f7fb;--ink:#171e2e;--muted:#68738a;--line:#e7eaf2;--violet:#674cf2;--pink:#f1469d;--mint:#dff9ee;--success:#13835c;--shadow:0 18px 55px rgba(30,39,81,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;line-height:1.5}
+button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid rgba(103,76,242,.25);outline-offset:2px}
+.wrap{max-width:1220px;margin:auto;padding:0 28px}.topbar{background:white;border-bottom:1px solid #eff0f5}.topbar .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.logo{display:flex;align-items:center;gap:11px;font-size:22px;letter-spacing:-1px;font-weight:900}.logo-mark{height:36px;width:36px;background:linear-gradient(135deg,#765dff,#ef69c0);border-radius:13px;display:grid;place-items:center;color:white;font-size:19px;box-shadow:0 7px 16px #8b68ff44}.top-note{font-size:12px;color:#788197;display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;border-radius:50%;background:#1ec28a;display:inline-block}
+.hero{padding:44px 0 28px;display:flex;gap:32px;align-items:flex-end;justify-content:space-between}.eyebrow{display:inline-flex;align-items:center;gap:7px;background:#eae5ff;color:#5f41d6;border-radius:30px;padding:6px 12px;font-size:12px;font-weight:800;letter-spacing:.02em}.hero h1{font-size:clamp(30px,4.5vw,48px);letter-spacing:-2.5px;line-height:1.16;margin:16px 0 13px;font-weight:900}.hero h1 em{font-style:normal;background:linear-gradient(110deg,#654ff4,#e145a4);background-clip:text;color:transparent}.hero p{margin:0;color:var(--muted);font-size:15px}.steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px}.step{background:white;border:1px solid var(--line);border-radius:30px;padding:8px 12px;font-size:12px;color:#5d6680;font-weight:700}.step b{color:#684af1;margin-right:3px}.arrow{color:#b8bed0;font-size:15px}
+.cols{display:grid;grid-template-columns:1.07fr .93fr;gap:20px;align-items:stretch}.panel{background:white;border:1px solid #e9ebf3;border-radius:22px;padding:25px;box-shadow:var(--shadow);min-width:0}.panel h2,.panel h3{font-size:19px;letter-spacing:-.7px;line-height:1.3;margin:0}.sub{color:var(--muted);font-size:13px;margin:7px 0 0}.panel-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:18px}.pill{border:1px solid #e7e1ff;color:#654bdc;background:#f4f0ff;border-radius:30px;font-size:11px;font-weight:800;padding:5px 9px;white-space:nowrap}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.row.between{justify-content:space-between}.fieldlabel{display:block;font-size:12px;font-weight:800;color:#42506a;margin-bottom:8px}.textarea{display:block;border:1px solid #dfe3ed;width:100%;height:190px;resize:vertical;border-radius:13px;padding:14px 15px;color:var(--ink);background:#fcfcfe;font-size:13px;line-height:1.75}.textarea::placeholder{color:#a5adbf}.help{margin:8px 0 14px;font-size:12px;color:#8b92a4}.upload{display:inline-flex;align-items:center;gap:6px;background:#f3f2fa;color:#504a80;border-radius:9px;font-size:12px;font-weight:800;padding:10px 13px;cursor:pointer;border:1px solid #eae7f4}.upload input{display:none}.smallbtn{background:white;border:1px solid #e2e5ef;border-radius:9px;font-weight:800;font-size:12px;color:#5e6681;padding:10px 13px}.smallbtn:hover,.upload:hover{border-color:#aa9bf7;color:#6245ed}.filters{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:21px}.textinput,.numberinput{width:100%;border:1px solid #dfe3ed;border-radius:10px;padding:11px 12px;background:#fff;color:var(--ink);font-size:13px}.textinput::placeholder{color:#a4acc0}.hint{display:flex;align-items:center;gap:8px;color:#798399;font-size:12px;margin-top:14px}.hint span{font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}.stat{background:#f7f8fc;border:1px solid #eff0f6;border-radius:15px;padding:17px 17px 15px;min-width:0}.stat.highlight{background:linear-gradient(135deg,#6850ed,#9668f8);border-color:transparent;color:white}.stat small{font-size:12px;font-weight:750;color:#7c8499}.stat.highlight small{color:#eee7ff}.stat strong{display:block;margin-top:4px;font-size:32px;line-height:1.3;letter-spacing:-1.5px;font-weight:900}.stat span{font-size:11px;color:#969caf}.stat.highlight span{color:#ece8ff}.participants{border:1px solid #e6e9f2;border-radius:13px;overflow:hidden}.listhead{display:flex;gap:10px;justify-content:space-between;align-items:center;background:#f9fafe;border-bottom:1px solid #e9ebf3;padding:12px 14px}.listhead b{font-size:12px;color:#4a556e}.search{border:1px solid #e6e7ed;border-radius:8px;background:white;padding:6px 9px;font-size:11px;max-width:150px;width:43%;outline-offset:2px}.listbody{max-height:246px;min-height:180px;overflow:auto}.person{display:flex;align-items:center;gap:10px;border-bottom:1px solid #f0f1f5;padding:11px 13px}.person:last-child{border-bottom:0}.avatar{height:32px;width:32px;flex:0 0 32px;background:#f0edff;border-radius:10px;color:#6d50e9;display:grid;place-items:center;font-size:11px;font-weight:900}.person-main{flex:1;min-width:0}.person-main b{display:block;font-size:12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.person-main span{display:block;font-size:11px;color:#8a92a2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.count{font-size:11px;color:#68758a;background:#f0f2f8;border-radius:25px;padding:3px 8px;flex-shrink:0}.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:178px;color:#9ca4b5;font-size:13px;text-align:center}.empty span{font-size:26px}
+.lottery{margin-top:20px}.drawtop{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap}.segmented{display:flex;gap:4px;background:#f0f1f8;border:1px solid #e9ebf3;border-radius:12px;padding:5px}.segmented button{background:transparent;border:0;border-radius:9px;font-size:13px;padding:10px 15px;font-weight:850;color:#7f879c;white-space:nowrap}.segmented button.on{background:white;color:#5f44e5;box-shadow:0 3px 9px rgba(37,28,90,.09)}.drawcontrols{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:21px;padding:15px;background:#f8f9fd;border:1px solid #edf0f7;border-radius:14px}.drawcontrols label{font-size:13px;font-weight:800;color:#4d5770}.numberinput{width:84px;text-align:center;font-weight:900;font-size:17px;padding:9px 10px}.primary{border:0;border-radius:11px;background:linear-gradient(135deg,#7355f5,#aa5ff5);box-shadow:0 7px 18px #7555f53d;color:white;font-weight:900;font-size:13px;padding:13px 24px;white-space:nowrap}.primary:not(:disabled):hover{filter:brightness(1.07);transform:translateY(-1px)}.drawcontrols .grow{flex:1}.drawhint{font-size:12px;color:#8790a3}.stage{min-height:228px;border-radius:16px;border:1px dashed #ded9f8;margin-top:16px;background:radial-gradient(ellipse at 55% 0,#f4efff 0%,#fdfdff 65%);padding:24px;position:relative;overflow:hidden}.stage-idle{text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:11px;min-height:176px}.stage-emoji{font-size:43px;filter:drop-shadow(0px 9px 12px #b9a7ff66)}.stage-idle b{font-size:17px;letter-spacing:-.5px}.stage-idle p{font-size:12px;color:#8c91a9;margin:0}.stage-title{text-align:center;font-size:11px;font-weight:900;color:#8b7bc4;letter-spacing:.14em;margin:0 0 13px}.winner-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}.winner-card{display:flex;flex-direction:column;align-items:center;gap:7px;min-width:135px;padding:19px 20px 15px;border:1px solid #e2d8ff;background:white;border-radius:15px;box-shadow:0 9px 22px #8778bb15;animation:rise .4s both}.winner-card .medal{font-size:24px}.winner-card b{font-size:15px;color:#4631af}.winner-card small{font-size:11px;color:#9c92c4}.win-note{text-align:center;font-size:12px;color:#827991;margin:17px 0 0}.ladderbox{overflow:auto;max-height:485px;padding:4px 0 12px}.ladder-svg{display:block;margin:0 auto;max-width:none}.ladder-bottom{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:12px}.ladder-pill{font-size:11px;color:#695f81;background:white;border:1px solid #e7e1f5;border-radius:20px;padding:4px 9px}.notice{font-size:12px;color:#7c8198;background:#fafafe;border-radius:10px;padding:10px 13px;margin:13px 0 0}
+.results{margin:20px 0 36px}.resultshead{display:flex;gap:20px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:15px}.resultshead .row{gap:8px}.resultstable{border:1px solid #e9ecf5;border-radius:13px;overflow:hidden}.resultrow{display:grid;grid-template-columns:65px minmax(120px,1fr) 150px;gap:15px;align-items:center;padding:13px 16px;border-bottom:1px solid #eef0f5;font-size:13px}.resultrow:last-child{border-bottom:0}.resultrow.header{background:#fafbfe;color:#8990a2;font-size:11px;font-weight:850}.resultrow b{font-size:13px}.rank{display:inline-grid;place-items:center;height:28px;width:28px;background:#efecff;color:#6242dc;border-radius:9px;font-size:12px;font-weight:900}.status{color:#12845c;font-size:11px;font-weight:900}.footer{padding:0 0 35px;text-align:center;font-size:12px;color:#979eb0}.footer a{color:#7560d8;text-decoration:none}.hidden{display:none!important}.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#23263b;color:white;padding:13px 18px;border-radius:12px;box-shadow:0 9px 36px #25253c44;font-size:13px;z-index:30;transition:opacity .2s,transform .2s}.toast.show{opacity:1;transform:translate(-50%,0)}.sparkle{position:absolute;top:-15px;width:8px;height:16px;opacity:0;animation:fall 1.8s linear infinite;pointer-events:none}.statkey{color:#8b92a4;font-size:11px;margin-left:auto;white-space:nowrap}
+@keyframes rise{from{opacity:0;transform:translateY(16px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes fall{0%{transform:translateY(-20px) rotate(0);opacity:1}90%{opacity:1}100%{transform:translateY(255px) rotate(540deg);opacity:0}}
 
+.auto-panel{margin-bottom:20px;background:linear-gradient(120deg,#fff,#fcfaff)}
+.auto-login{padding:15px;background:#f7f5ff;border:1px solid #e6e1ff;border-radius:13px}
+.auto-login b{font-size:14px}.auto-login .sub{margin-bottom:12px}
+.auto-flex{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.auto-flex .textinput{flex:1;min-width:200px;font-size:14px;padding:13px}
+.auto-account{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#f8f8fe;border:1px solid #eeedf8;border-radius:13px;margin-bottom:19px;flex-wrap:wrap}
+.auto-account .sub{margin-top:5px}.ig-indicator{color:#8b8ca7;font-size:13px;font-weight:900}.ig-indicator.connected{color:#15815b}
+.auto-status{padding:11px 12px;margin-top:11px;border-radius:10px;background:#f7f8fc;font-size:12px;color:#59647e;min-height:39px}
+.auto-status.error{background:#fff0f2;color:#b72f56}.auto-status.success{background:#ebfaf2;color:#16825b}
+.auto-imported{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;font-weight:800;color:#5b4bc0;margin-top:10px}
+.auto-caveat{color:#8991a2;font-size:11px;line-height:1.6;margin:15px 0 0}
+[hidden]{display:none!important}
+@media(max-width:900px){.hero{flex-direction:column;align-items:flex-start;gap:22px}.cols{grid-template-columns:1fr}.steps{margin:0}.listbody{max-height:210px}}
+@media(max-width:560px){.wrap{padding:0 15px}.topbar .wrap{height:61px}.hero{padding:30px 0 20px}.hero h1{letter-spacing:-1.4px}.steps{gap:4px}.step{padding:6px 9px;font-size:10px}.arrow{font-size:12px}.panel{padding:18px;border-radius:17px}.filters{grid-template-columns:1fr}.stats{gap:9px}.stat{padding:13px}.stat strong{font-size:27px}.drawtop{display:block}.segmented{margin-top:14px}.drawcontrols{gap:9px}.drawcontrols .grow{display:none}.primary{width:100%;margin-top:3px}.drawhint{width:100%}.stage{padding:18px 10px}.resultrow{grid-template-columns:42px 1fr 60px;gap:8px;padding:11px}.top-note{font-size:10px}.top-note .long{display:none}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap"><div class="logo"><div class="logo-mark">✦</div> 픽데이 <span style="font-size:11px;color:#939ab0;font-weight:650;letter-spacing:0;margin-top:4px">PICK DAY</span></div><div class="top-note"><span class="dot"></span><span class="long">Meta 공식 API 연동</span> 댓글 자동 수집 · 추첨</div></div></header>
+<main class="wrap">
+  <section class="hero"><div><div class="eyebrow">🎁 INSTAGRAM EVENT TOOL</div><h1>체험단 모집부터 <em>당첨자 발표</em>까지.</h1><p>인스타 계정 연결 후 게시물 링크만 입력하세요. 댓글 수집부터 공정 추첨까지 자동으로!</p></div><div class="steps"><span class="step"><b>01</b> 링크 연결</span><span class="arrow">›</span><span class="step"><b>02</b> 응모 집계</span><span class="arrow">›</span><span class="step"><b>03</b> 공정 추첨</span></div></section>
+  <section class="panel auto-panel" id="auto-panel">
+    <div class="panel-top"><div><h2>⚡ 인스타 댓글 자동 가져오기</h2><p class="sub">내가 관리하는 비즈니스/크리에이터 계정의 게시물만 공식 API로 수집합니다.</p></div><span class="pill">AUTO MODE</span></div>
+    <div class="auto-login" id="auto-login" hidden>
+      <div><b>🔐 관리자 로그인</b><p class="sub">앱에 설정한 관리자 비밀번호를 입력해 주세요. 인스타 비밀번호가 아닙니다.</p></div>
+      <div class="auto-flex"><input type="password" id="admin-password" class="textinput" autocomplete="current-password" placeholder="관리자 비밀번호" /><button type="button" class="primary" id="admin-login">관리자 로그인</button></div>
+    </div>
+    <div id="auto-dashboard" hidden>
+      <div class="auto-account"><div><span id="ig-indicator" class="ig-indicator">● 계정 확인 중</span><p class="sub" id="ig-account-text">Meta Instagram API 연결 상태를 확인하는 중입니다.</p></div><div class="auto-flex"><button type="button" class="smallbtn" id="ig-connect">📸 인스타그램 연결</button><button type="button" class="smallbtn" id="ig-disconnect" hidden>연결 해제</button><button type="button" class="smallbtn" id="admin-logout">로그아웃</button></div></div>
+      <label class="fieldlabel" for="instagram-post-url">모집 게시물 URL</label>
+      <div class="auto-flex"><input class="textinput" id="instagram-post-url" type="url" inputmode="url" placeholder="https://www.instagram.com/p/ABC123.../" /><button type="button" id="auto-import" class="primary">💬 댓글 자동 수집</button></div>
+      <div class="auto-status" id="auto-status" aria-live="polite">최초 한 번 인스타 계정을 연결하면 게시물 링크만으로 댓글을 불러올 수 있어요.</div>
+      <div class="auto-imported" id="auto-imported" hidden><span id="import-counts"></span><span id="import-date"></span></div>
+    </div>
+    <p class="auto-caveat">ℹ️ 본인 계정의 피드 게시물·릴스 주소가 필요합니다. 최상위 댓글만 집계하고 대댓글은 제외합니다. 팔로우·좋아요·스토리 공유 여부는 자동 검증하지 않습니다.</p>
+  </section>
+  <section class="cols" aria-label="참여자 입력과 통계">
+    <div class="panel"><div class="panel-top"><div><h2>💬 댓글 명단 가져오기</h2><p class="sub">자동 수집된 댓글을 확인하거나 직접 CSV/TXT를 불러올 수도 있어요.</p></div><span class="pill">STEP 01</span></div>
+      <label class="fieldlabel" for="raw">댓글 · 아이디 목록</label>
+      <textarea class="textarea" id="raw" spellcheck="false" placeholder="@happy_day, 체험단 신청합니다!\n@daily._.life, 참여 완료 💜\n@happy_day, 저도 꼭 써보고 싶어요\n@hello.world, 체험 신청해요"></textarea>
+      <p class="help">한 줄에 한 명: <b>@아이디, 댓글 내용</b> / CSV 헤더 <b>username,comment</b> 지원 · 중복 댓글은 자동 집계</p>
+      <div class="row between"><div class="row"><label class="upload">📁 CSV / TXT 업로드<input id="file" type="file" accept=".csv,.txt,text/plain,text/csv" /></label><button type="button" class="smallbtn" id="demo">✨ 예시 넣기</button></div><button type="button" class="smallbtn" id="clear">초기화</button></div>
+      <div class="filters"><div><label for="keyword" class="fieldlabel">필수 포함 키워드 <span style="font-weight:500;color:#a3abbc">(선택)</span></label><input class="textinput" id="keyword" placeholder="예: 신청" /></div><div><label for="exclude" class="fieldlabel">제외할 아이디 <span style="font-weight:500;color:#a3abbc">(선택)</span></label><input class="textinput" id="exclude" placeholder="예: my_shop, admin" /></div></div>
+      <div class="hint"><span>🔒</span> 계정당 1회 응모 · 자동 수집된 댓글은 앱 서버를 거쳐 브라우저에서 집계합니다.</div>
+    </div>
+    <div class="panel"><div class="panel-top"><div><h2>📊 응모 통계</h2><p class="sub">댓글을 불러오면 조건에 따라 즉시 재집계됩니다.</p></div><span class="pill">STEP 02</span></div>
+      <div class="stats"><div class="stat"><small>전체 유효 댓글</small><strong id="s-comments">0</strong><span>인식된 아이디 기준</span></div><div class="stat"><small>중복 댓글</small><strong id="s-duplicates">0</strong><span>동일 아이디의 추가 댓글</span></div><div class="stat highlight"><small>최종 응모자</small><strong id="s-eligible">0<span style="font-size:17px;margin-left:3px">명</span></strong><span>중복 · 조건 제외 후</span></div><div class="stat"><small>조건 미충족 댓글</small><strong id="s-filtered">0</strong><span>키워드 · 제외 아이디</span></div></div>
+      <div class="participants"><div class="listhead"><b>응모 확정 명단 <span id="listcount" style="color:#8066ef">(0)</span></b><input id="search" class="search" placeholder="🔎 아이디 찾기" aria-label="아이디 찾기" /></div><div class="listbody" id="list"><div class="empty"><span>✍️</span> 댓글 명단을 넣으면<br/>응모자가 여기 표시됩니다.</div></div></div>
+      <p class="hint" id="parse-note" aria-live="polite"><span>💡</span> 입력 예시를 눌러 기능을 바로 체험해 보세요.</p>
+    </div>
+  </section>
+  <section class="panel lottery" id="drawsection"><div class="drawtop"><div><h2>🎯 행운의 당첨자 뽑기</h2><p class="sub">원하는 방식을 선택한 뒤 당첨 인원을 지정하세요.</p></div><div class="segmented" aria-label="추첨 방식"><button id="tab-random" class="on" aria-pressed="true">🎲 랜덤 추첨</button><button id="tab-ladder" aria-pressed="false">🪜 사다리타기</button></div></div>
+    <div class="drawcontrols"><label for="num">당첨 인원</label><input class="numberinput" id="num" type="number" min="1" max="99999" value="3" inputmode="numeric" /><span class="drawhint" id="chance">명단을 입력해주세요</span><span class="grow"></span><button class="primary" id="draw">🎉 당첨자 추첨하기</button></div>
+    <div class="stage" id="stage"><div class="stage-idle"><div class="stage-emoji">🎁</div><b>두근두근, 오늘의 주인공은?</b><p>명단을 넣고 위 버튼을 눌러 추첨을 시작해 보세요.</p></div></div>
+    <div class="notice" id="method-note">💡 <b>랜덤 추첨:</b> 암호학적으로 안전한 난수를 이용해 중복 없이 뽑습니다. 재추첨하면 새로운 결과가 나옵니다.</div>
+  </section>
+  <section class="panel results" id="results"><div class="resultshead"><div><h2>🏆 최종 당첨 결과</h2><p class="sub" id="result-info">아직 추첨 내역이 없습니다.</p></div><div class="row"><button class="smallbtn" id="copy" disabled>📋 발표문 복사</button><button class="smallbtn" id="export" disabled>⬇️ CSV 저장</button></div></div><div class="resultstable" id="result-table"><div class="empty"><span>🏅</span> 추첨이 끝나면 당첨자 명단이 여기에 저장됩니다.</div></div></section>
+</main>
+<div class="footer wrap">© PICK DAY · Meta 공식 API를 사용하는 비공식 도구 · 인스타그램/Meta와 제휴된 서비스가 아닙니다.</div><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const el = { raw:$('raw'), file:$('file'), keyword:$('keyword'), exclude:$('exclude'), num:$('num'), search:$('search'), list:$('list'), stage:$('stage'), note:$('method-note'), draw:$('draw'), chance:$('chance'), results:$('result-table'), info:$('result-info'), toast:$('toast') };
+  let importedEntries=null, importMeta=null;
+  let entries=[], eligible=[], winners=[], mode='random', lastMethod='', noticeTimeout=0, drawVersion=0;
+  const demoRows=[
+    ['sunny.moment','신청합니다! 너무 기대돼요 ☀️'],['mood._.record','꼭 체험해보고 싶어요 신청!'],['luv_haru','체험단 신청합니다 💜'],['coco_daily','신청 완료!'],['rainbow.092','좋은 이벤트네요 신청해요'],['bear_honey','저도 신청합니다!'],['pocket_sunny','친구와 함께 신청'],['mint.planet','신청하고 갑니다 ✨'],['happyday_7','체험단 신청이요'],['lulu.lala','신청합니다 ❤️'],['gently_today','참여 신청해요'],['goodnight.me','신청!'],['blue_cat12','신청합니다'],['daily.seoul','신청합니다 🎁'],['violet_star','너무 예뻐요 신청합니다'],['luv_haru','또 댓글 달아요!'],['sunny.moment','꼭 뽑히면 좋겠어요'],['paper.moon','체험 신청했습니다'],['light_2026','신청해요~'],['cloud__nine','저도 신청해요']
+  ];
+  function safeText(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function username(s){s=String(s||'').trim().replace(/^@/,'').replace(/^https?:\/\/(?:www\.)?instagram\.com\//i,'').replace(/\/$/,'');return /^[a-zA-Z0-9._]{1,30}$/.test(s)?s.toLowerCase():null;}
+  function splitCSVLine(s){let out=[],cur='',quoted=false;for(let i=0;i<s.length;i++){let c=s[i];if(c==='"'){if(quoted&&s[i+1]==='"'){cur+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){out.push(cur);cur='';}else cur+=c;}out.push(cur);return out;}
+  function parseData(raw){let output=[],invalid=0;let lines=String(raw||'').replace(/^\uFEFF/,'').split(/\r?\n/).filter(s=>s.trim());let header=null;
+    for(let li=0;li<lines.length;li++){
+      const str=lines[li].trim();let cols=str.includes('\t')?str.split('\t'):splitCSVLine(str);
+      if(li===0){let low=cols.map(x=>x.trim().toLowerCase());let u=low.findIndex(x=>['username','user','작성자','아이디','닉네임','account','author'].includes(x));let c=low.findIndex(x=>['comment','text','댓글','내용','message'].includes(x));if(u!==-1){header={u,c};continue;}}
+      let u=null,comment='';
+      if(header){u=username(cols[header.u]);comment=header.c===-1?'':String(cols[header.c]||'').trim();}
+      else if(cols.length>=2){u=username(cols[0]);comment=cols.slice(1).join(str.includes('\t')?'\t':',').trim();}
+      else{let m=str.match(/^\s*(@?[a-z0-9._]{1,30})(?:\s+(.+))?$/i);if(m){u=username(m[1]);comment=(m[2]||'').trim();}}
+      if(u)output.push({user:u,comment,line:li+1});else invalid++;
+    }
+    return {output,invalid};
+  }
+  function reprocess(){let parsed=importedEntries?{output:importedEntries,invalid:0}:parseData(el.raw.value);entries=parsed.output;let keyword=el.keyword.value.trim().toLowerCase(),excluded=new Set(el.exclude.value.toLowerCase().split(/[\s,;]+/).map(x=>x.replace(/^@/,'')).filter(Boolean));
+    let accepted=entries.filter(x=>!excluded.has(x.user)&&(!keyword||x.comment.toLowerCase().includes(keyword)));let byUser=new Map();for(const e of accepted){if(!byUser.has(e.user))byUser.set(e.user,{user:e.user,comments:0,preview:e.comment});byUser.get(e.user).comments++;} eligible=[...byUser.values()];
+    const allUsers=new Set(entries.map(e=>e.user));$('s-comments').textContent=entries.length.toLocaleString('ko-KR');$('s-duplicates').textContent=(entries.length-allUsers.size).toLocaleString('ko-KR');$('s-eligible').innerHTML=eligible.length.toLocaleString('ko-KR')+'<span style="font-size:17px;margin-left:3px">명</span>';$('s-filtered').textContent=(entries.length-accepted.length).toLocaleString('ko-KR');$('listcount').textContent='('+eligible.length.toLocaleString('ko-KR')+')';
+    $('parse-note').innerHTML='<span>💡</span> '+(parsed.invalid?`형식이 맞지 않는 ${parsed.invalid.toLocaleString('ko-KR')}개 줄은 제외했어요. `:'')+'중복은 아이디 기준으로 1회만 응모됩니다.';
+    el.chance.textContent=eligible.length?'총 '+eligible.length.toLocaleString('ko-KR')+'명 중 '+Math.min(Math.max(1,+el.num.value||1),eligible.length)+'명 선정':'명단을 입력해주세요';
+    renderList();if(winners.length)invalidateResults();
+  }
+  function renderList(){let q=el.search.value.trim().toLowerCase();let filtered=eligible.filter(e=>e.user.includes(q));if(!filtered.length){el.list.innerHTML='<div class="empty"><span>🔍</span> '+(eligible.length?'검색된 아이디가 없어요.':'표시할 응모자가 없습니다.')+'</div>';return;}
+    let view=filtered.slice(0,250);el.list.innerHTML=view.map((e,i)=>`<div class="person"><div class="avatar">${safeText(e.user.slice(0,2).toUpperCase())}</div><div class="person-main"><b>@${safeText(e.user)}</b><span>${safeText(e.preview||'댓글 내용 없음')}</span></div><span class="count">댓글 ${e.comments}</span></div>`).join('')+(filtered.length>250?`<div class="person" style="font-size:12px;color:#9299a9;justify-content:center">상위 250명만 표시됩니다 · 추첨에는 ${filtered.length}명 전부 포함</div>`:'');
+  }
+  function randomInt(max){if(!Number.isSafeInteger(max)||max<=0)throw new Error('잘못된 난수 범위');let range=4294967296,limit=Math.floor(range/max)*max,v;do{let a=new Uint32Array(1);crypto.getRandomValues(a);v=a[0];}while(v>=limit);return v%max;}
+  function shuffle(arr){let a=arr.slice();for(let i=a.length-1;i>0;i--){let j=randomInt(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
+  function toast(message){el.toast.textContent=message;el.toast.classList.add('show');clearTimeout(noticeTimeout);noticeTimeout=setTimeout(()=>el.toast.classList.remove('show'),2700);}
+  function setMode(m){mode=m;$('tab-random').classList.toggle('on',m==='random');$('tab-ladder').classList.toggle('on',m==='ladder');$('tab-random').setAttribute('aria-pressed',m==='random');$('tab-ladder').setAttribute('aria-pressed',m==='ladder');el.note.innerHTML=m==='random'?'💡 <b>랜덤 추첨:</b> 암호학적으로 안전한 난수를 이용해 중복 없이 뽑습니다. 재추첨하면 새로운 결과가 나옵니다.':'💡 <b>사다리타기:</b> 참가자 수가 많으면 먼저 무작위로 후보를 고른 후 실제 사다리를 진행합니다. 모두에게 동일한 추첨 확률이 적용됩니다.';drawVersion++;el.stage.innerHTML='<div class="stage-idle"><div class="stage-emoji">'+(m==='random'?'🎁':'🪜')+'</div><b>'+(m==='random'?'두근두근, 오늘의 주인공은?':'사다리를 타고 행운을 찾아보세요!')+'</b><p>응모자와 인원을 확인한 뒤 추첨해 주세요.</p></div>';}
+  function invalidateResults(){winners=[];lastMethod='';$('copy').disabled=true;$('export').disabled=true;el.info.textContent='명단 또는 필터가 바뀌어 이전 추첨 결과를 초기화했습니다.';el.results.innerHTML='<div class="empty"><span>🏅</span> 새로운 조건으로 다시 추첨해 주세요.</div>';el.stage.innerHTML='<div class="stage-idle"><div class="stage-emoji">🎁</div><b>새로운 명단이 반영됐어요.</b><p>아래 버튼으로 다시 추첨해 주세요.</p></div>';drawVersion++;}
+  function sprinkle(){for(let i=0;i<25;i++){let s=document.createElement('span');s.className='sparkle';s.style.left=(4+Math.random()*92)+'%';s.style.animationDelay=(Math.random()*.8)+'s';s.style.background=['#7b62ee','#f888c2','#f4bf58','#5ad9b9'][i%4];el.stage.appendChild(s);}setTimeout(()=>{el.stage.querySelectorAll('.sparkle').forEach(x=>x.remove());},3200);}
+  function randomDraw(count){winners=shuffle(eligible).slice(0,count);lastMethod='랜덤 추첨';el.stage.innerHTML=`<p class="stage-title">✨ CONGRATULATIONS ✨</p><div class="winner-grid">${winners.map((w,i)=>`<div class="winner-card" style="animation-delay:${Math.min(i,20)*.055}s"><span class="medal">${i===0?'🏆':'🎉'}</span><b>@${safeText(w.user)}</b><small>당첨자 ${i+1}</small></div>`).join('')}</div><p class="win-note">총 ${eligible.length.toLocaleString('ko-KR')}명 중 ${count.toLocaleString('ko-KR')}명 당첨 · 계정당 최대 1회</p>`;sprinkle();finishDraw();}
+  function makeLadder(finalists,count){const n=finalists.length, levels=Math.max(12,Math.min(23,n+6)), width=Math.max(510,(n-1)*80+130), left=66,right=width-66, top=76,bottom=392,step=(right-left)/Math.max(1,n-1), gap=(bottom-top)/(levels+1);let rungs=[];
+    for(let level=0;level<levels;level++){let used=new Set();for(let lane=0;lane<n-1;lane++){if(used.has(lane)||used.has(lane+1))continue;if(randomInt(100)<35){rungs.push({level,lane});used.add(lane);used.add(lane+1);}}}
+    let paths=[];for(let start=0;start<n;start++){let pos=start,pts=[[left+pos*step,top]];for(let level=0;level<levels;level++){const y=top+(level+1)*gap;pts.push([left+pos*step,y]);let rung=rungs.find(r=>r.level===level&&(r.lane===pos||r.lane===pos-1));if(rung){pos=rung.lane===pos?pos+1:pos-1;pts.push([left+pos*step,y]);}}pts.push([left+pos*step,bottom]);paths.push({start,end:pos,pts});}
+    const winningColumns=new Set(shuffle(Array.from({length:n},(_,i)=>i)).slice(0,count));let won=paths.filter(p=>winningColumns.has(p.end));return {n,levels,width,left,top,bottom,step,gap,rungs,paths,winningColumns,won,finalists};
+  }
+  const svgns='http://www.w3.org/2000/svg';function svgNode(tag,attrs,text){let n=document.createElementNS(svgns,tag);for(const [k,v] of Object.entries(attrs||{}))n.setAttribute(k,String(v));if(text!=null)n.textContent=text;return n;}
+  function ladderDraw(count){let poolSize=Math.min(eligible.length,Math.max(count+5,14),48);let finalists=shuffle(eligible).slice(0,poolSize);const ladder=makeLadder(finalists,count),{n,width,left,top,bottom,step,gap,rungs,winningColumns,won,paths}=ladder;winners=won.map(p=>finalists[p.start]);lastMethod='사다리타기';el.stage.innerHTML='<p class="stage-title">🪜 LUCKY LADDER 🪜</p><div class="ladderbox" id="ladderbox"></div><div class="ladder-bottom"><span class="ladder-pill">참가자 '+eligible.length.toLocaleString('ko-KR')+'명</span><span class="ladder-pill">사다리 후보 '+n+'명</span><span class="ladder-pill">당첨 '+count+'명</span></div><p class="win-note" id="ladder-caption">'+(eligible.length>poolSize?'전체 명단에서 후보를 무작위로 선발한 후 사다리 진행 · ':'')+'동일한 추첨 확률 · 결과 공개 중</p>';
+    let svg=svgNode('svg',{viewBox:`0 0 ${width} 455`,width:width,height:455,class:'ladder-svg',role:'img','aria-label':'참가자 이름, 가로 연결선, 당첨 및 꽝 위치가 있는 사다리'});
+    svg.appendChild(svgNode('rect',{x:0,y:0,width,height:455,fill:'transparent'}));
+    for(let i=0;i<n;i++){let x=left+i*step;svg.appendChild(svgNode('line',{x1:x,x2:x,y1:top,y2:bottom,stroke:'#c9c1e4','stroke-width':2.6,'stroke-linecap':'round'}));let name=finalists[i].user;let short=name.length>9?name.slice(0,8)+'…':name;svg.appendChild(svgNode('text',{x,y:43,'text-anchor':'middle','font-size':10.5,'font-weight':800,fill:'#50526a'},'@'+short));svg.appendChild(svgNode('rect',{x:x-23,y:bottom+12,width:46,height:23,rx:10,fill:winningColumns.has(i)?'#ede4ff':'#eef0f6'}));svg.appendChild(svgNode('text',{x,y:bottom+27,'text-anchor':'middle','font-size':11,'font-weight':900,fill:winningColumns.has(i)?'#6342d4':'#939aaa'},winningColumns.has(i)?'당첨':'다음에'));}
+    for(let rung of rungs){let x=left+rung.lane*step,y=top+(rung.level+1)*gap;svg.appendChild(svgNode('line',{x1:x,x2:x+step,y1:y,y2:y,stroke:'#a89bcf','stroke-width':3.2,'stroke-linecap':'round'}));}
+    for(let p of won){let path=svgNode('polyline',{points:p.pts.map(pt=>pt.join(',')).join(' '),fill:'none',stroke:'#764dff','stroke-width':5.5,'stroke-linecap':'round','stroke-linejoin':'round'});let length=p.pts.reduce((sum,pt,i)=>i?sum+Math.hypot(pt[0]-p.pts[i-1][0],pt[1]-p.pts[i-1][1]):0,0);path.style.strokeDasharray=length;path.style.strokeDashoffset=length;path.style.transition='stroke-dashoffset 2.1s ease-in-out';svg.appendChild(path);requestAnimationFrame(()=>requestAnimationFrame(()=>{path.style.strokeDashoffset='0';}));}
+    $('ladderbox').appendChild(svg);setTimeout(()=>{if(document.contains(svg)){$('ladder-caption').textContent='🎉 사다리 결과가 공개되었습니다! 아래 당첨자 명단을 확인해 주세요.';sprinkle();}},2300);finishDraw();}
+  function finishDraw(){el.info.textContent=lastMethod+' · '+new Date().toLocaleString('ko-KR')+' · 총 '+eligible.length.toLocaleString('ko-KR')+'명 중 '+winners.length+'명';el.results.innerHTML='<div class="resultrow header"><span>순서</span><span>당첨자 인스타 아이디</span><span>상태</span></div>'+winners.map((w,i)=>`<div class="resultrow"><span class="rank">${i+1}</span><b>@${safeText(w.user)}</b><span class="status">✓ 당첨 확정</span></div>`).join('');$('copy').disabled=false;$('export').disabled=false;}
+  function draw(){const n=Number(el.num.value);if(!eligible.length){toast('먼저 참가자 명단을 입력해 주세요.');return;}if(!Number.isInteger(n)||n<1){toast('당첨 인원을 1명 이상 입력해 주세요.');return;}if(n>eligible.length){toast('당첨 인원이 참가자 수보다 많아요.');return;}if(n>2000){toast('한 번에 최대 2,000명까지 뽑을 수 있어요.');return;}if(mode==='ladder'&&n>48){toast('사다리타기는 최대 48명까지 뽑을 수 있어요. 랜덤 모드를 사용해 주세요.');return;}try{drawVersion++;if(mode==='random')randomDraw(n);else ladderDraw(n);$('results').scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){console.error(e);toast('추첨을 처리하지 못했어요. 브라우저를 확인해 주세요.');}}
+  function resultText(){return '🎉 체험단 당첨자 발표 🎉\n\n'+winners.map((e,i)=>(i+1)+'. @'+e.user).join('\n')+'\n\n참여해 주신 모든 분들께 감사드립니다! 💜'+(importMeta?'\n\n게시물: '+importMeta.url+'\n추첨 명단 수집 시각(UTC): '+importMeta.at+'\n댓글 스냅샷 SHA-256: '+importMeta.hash:'');}
+  function downloadCSV(){if(!winners.length)return;let data=[['rank','username','method','participants','drawn_at','post_url','snapshot_sha256','collected_at_utc'].join(',')];let time=new Date().toISOString();winners.forEach((w,i)=>data.push([i+1,w.user,lastMethod,eligible.length,time,importMeta?.url||'',importMeta?.hash||'',importMeta?.at||''].map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')));let blob=new Blob(['\uFEFF'+data.join('\r\n')],{type:'text/csv;charset=utf-8;'});let url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='pickday_winners_'+new Date().toISOString().slice(0,10)+'.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('당첨자 CSV가 저장됐어요.');}
+  el.raw.addEventListener('input',()=>{importedEntries=null;importMeta=null;reprocess();});['keyword','exclude'].forEach(id=>$(id).addEventListener('input',reprocess));el.search.addEventListener('input',renderList);el.num.addEventListener('input',()=>{let n=+el.num.value||0;el.chance.textContent=eligible.length?'총 '+eligible.length.toLocaleString('ko-KR')+'명 중 '+n.toLocaleString('ko-KR')+'명 선정':'명단을 입력해주세요';});
+  $('demo').addEventListener('click',()=>{importedEntries=null;importMeta=null;el.raw.value=demoRows.map(x=>'@'+x[0]+', '+x[1]).join('\n');el.keyword.value='';el.exclude.value='';reprocess();toast('20개 예시 댓글을 불러왔어요!');});
+  $('clear').addEventListener('click',()=>{importedEntries=null;importMeta=null;el.raw.value='';el.keyword.value='';el.exclude.value='';el.search.value='';el.file.value='';reprocess();toast('입력한 명단을 지웠어요.');});
+  el.file.addEventListener('change',async e=>{let file=e.target.files&&e.target.files[0];if(!file)return;try{if(file.size>5*1024*1024){toast('5MB 이하 파일을 사용해 주세요.');return;}importedEntries=null;importMeta=null;el.raw.value=await file.text();reprocess();toast(file.name+' 파일을 불러왔어요.');}catch(err){toast('파일을 읽지 못했어요.');}});
+  $('tab-random').addEventListener('click',()=>setMode('random'));$('tab-ladder').addEventListener('click',()=>setMode('ladder'));el.draw.addEventListener('click',draw);$('export').addEventListener('click',downloadCSV);
+  $('copy').addEventListener('click',async()=>{if(!winners.length)return;try{await navigator.clipboard.writeText(resultText());toast('당첨자 발표문을 복사했어요.');}catch(e){let area=document.createElement('textarea');area.value=resultText();area.style.position='fixed';area.style.opacity=0;document.body.appendChild(area);area.select();let ok=document.execCommand('copy');area.remove();toast(ok?'발표문을 복사했어요.':'복사 기능을 사용할 수 없어요.');}});
+  window.pickdayLoadInstagram = function(data){
+    const total=data.comments.length;
+    importedEntries=data.comments.filter(c=>/^[a-zA-Z0-9._]{1,30}$/.test(c.username||'')).map((c,i)=>({user:c.username.toLowerCase(),comment:c.text||'',line:i+1,id:c.id,timestamp:c.timestamp}));
+    importMeta={url:data.post.permalink,at:data.fetched_at,hash:data.snapshot_sha256};
+    el.raw.value=data.comments.map(c=>'@'+(c.username||'작성자미제공')+', '+(c.text||'').replace(/[\r\n]+/g,' ↵ ')).join('\n');
+    const connectedUser=document.getElementById('ig-account-text')?.dataset.username;
+    if(connectedUser){const curr=el.exclude.value.split(/[\s,;]+/).map(x=>x.replace(/^@/,'').toLowerCase());if(!curr.includes(connectedUser.toLowerCase()))el.exclude.value+=(el.exclude.value.trim()?', ':'')+connectedUser;}
+    reprocess();
+    $('parse-note').textContent='💡 공식 API에서 받은 댓글 '+total.toLocaleString('ko-KR')+'개 중 작성자 정보가 없는 '+data.stats.missing_username+'개는 자동 제외했습니다. 대댓글은 포함하지 않습니다.';
+  };
+  reprocess();
+})();
+</script>
+
+<script>
+(function(){
+  'use strict';
+  const $=id=>document.getElementById(id);
+  let csrf='';
+  const changeStatus=(message,type='')=>{$('auto-status').textContent=message;$('auto-status').className='auto-status '+type;};
+  async function req(url,method='GET',payload=null){
+    const opts={method,credentials:'same-origin',headers:{'Accept':'application/json'}};
+    if(method!=='GET'){opts.headers['Content-Type']='application/json';opts.headers['X-CSRF-Token']=csrf;opts.body=JSON.stringify(payload||{});}
+    const r=await fetch(url,opts);let data;try{data=await r.json();}catch(e){throw Error('서버 응답을 읽지 못했습니다.');}
+    if(!r.ok||!data.ok)throw Error(data.error||'요청이 실패했습니다.');return data;
+  }
+  async function refresh(){
+    try{
+      const s=await req('/api/status');csrf=s.csrf;
+      $('auto-login').hidden=s.authenticated;
+      $('auto-dashboard').hidden=!s.authenticated;
+      if(!s.authenticated)return;
+      $('ig-indicator').classList.toggle('connected',!!s.connected);
+      $('ig-indicator').textContent=s.connected?'● @'+s.username+' 연결됨':'○ 아직 인스타 계정이 연결되지 않았어요';
+      $('ig-account-text').textContent=s.connected?'이 계정의 게시물·릴스 댓글을 불러올 수 있습니다.':'인스타 프로 계정을 연결해 주세요.';
+      $('ig-account-text').dataset.username=s.connected?s.username:'';
+      $('ig-connect').textContent=s.connected?'🔄 인스타 계정 재연결':'📸 인스타그램 연결';
+      $('ig-connect').disabled=!s.instagram_ready;
+      $('ig-disconnect').hidden=!s.connected;
+      $('auto-import').disabled=!s.connected;
+      if(!s.instagram_ready)changeStatus('서버에 Meta App ID / Secret / Redirect URI 설정이 필요합니다. 아래 사용 설명서를 확인하세요.','error');
+      else if(!s.connected)changeStatus('먼저 인스타그램 연결 버튼을 눌러 로그인과 댓글 권한을 승인하세요.');
+      else changeStatus('@'+s.username+' 연결 완료! 게시물 링크를 넣고 댓글 자동 수집 버튼을 눌러주세요.','success');
+    }catch(e){$('auto-login').hidden=false;$('auto-dashboard').hidden=true;window.alert('서버 연결 오류: '+e.message);}
+  }
+  $('admin-login').addEventListener('click',async()=>{
+    try{await req('/api/login','POST',{password:$('admin-password').value});$('admin-password').value='';await refresh();}catch(e){window.alert(e.message);}
+  });
+  $('admin-password').addEventListener('keydown',e=>{if(e.key==='Enter')$('admin-login').click();});
+  $('admin-logout').addEventListener('click',async()=>{try{await req('/api/logout','POST');await refresh();}catch(e){changeStatus(e.message,'error');}});
+  $('ig-connect').addEventListener('click',()=>{window.location.assign('/auth/connect');});
+  $('ig-disconnect').addEventListener('click',async()=>{
+    if(!window.confirm('인스타 계정 연결을 해제할까요? 기존 당첨 명단은 브라우저를 새로고침하면 사라집니다.'))return;
+    try{await req('/api/disconnect','POST');await refresh();}catch(e){changeStatus(e.message,'error');}
+  });
+  $('auto-import').addEventListener('click',async()=>{
+    const url=$('instagram-post-url').value.trim();
+    if(!/^https:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/[A-Za-z0-9_-]{5,30}\/?(?:\?.*)?$/.test(url)){
+      changeStatus('https://www.instagram.com/p/... 또는 /reel/... 게시물 링크를 확인해 주세요.','error');return;
+    }
+    $('auto-import').disabled=true;$('auto-import').textContent='수집 중…';
+    changeStatus('Meta 공식 API에서 댓글을 페이지별로 불러오는 중입니다. 많은 댓글은 시간이 걸릴 수 있어요.');
+    try{
+      const data=await req('/api/import','POST',{url});
+      window.pickdayLoadInstagram(data);
+      $('auto-imported').hidden=false;
+      $('import-counts').textContent='댓글 '+data.stats.total.toLocaleString('ko-KR')+'개 · 계정 '+data.stats.accounts.toLocaleString('ko-KR')+'개 · 작성자 미제공 '+data.stats.missing_username+'개';
+      $('import-date').textContent='수집 시각: '+new Date(data.fetched_at).toLocaleString('ko-KR');
+      changeStatus('댓글 수집이 완료됐어요! 키워드와 제외 아이디를 확인하고 추첨하세요.','success');
+      $('auto-panel').scrollIntoView({behavior:'smooth',block:'start'});
+    }catch(e){changeStatus(e.message,'error');}finally{$('auto-import').textContent='💬 댓글 자동 수집';$('auto-import').disabled=false;}
+  });
+  const params=new URLSearchParams(window.location.search);
+  refresh().then(()=>{if(params.has('ig_connected'))changeStatus('인스타 연결이 완료됐어요! 게시물 링크를 입력해 주세요.','success');
+      if(params.has('ig_error'))changeStatus('인스타 연결에 실패했어요 ('+params.get('ig_error')+'). Meta 설정 및 권한을 확인해 주세요.','error');
+      if(params.has('ig_connected')||params.has('ig_error'))history.replaceState(null,'',window.location.pathname);});
+})();
+</script>
+</body>
+</html>
